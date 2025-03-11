@@ -263,6 +263,17 @@ function ENT:DoAnimationEvent( data )
     self:AddGesture( data )
 end
 
+function ENT:AnimRestartGesture( ev, data, kill )
+    if ( CLIENT ) then return end
+    self:RemoveGesture( data )
+    self:SetLayerCycle( ev, 0 )
+    self:RestartGesture( data, true, kill )
+end
+
+function ENT:DoCustomAnimEvent( ... )
+    hook.Run("DoAnimationEvent", self, ... )
+end
+
 function ENT:GetHull()
     return self:GetCollisionBounds()
 end
