@@ -266,6 +266,7 @@ end
 function ENT:AnimRestartGesture( ev, data, kill )
     if ( CLIENT ) then return end
     self:RemoveGesture( data )
+    self:SetLayerCycle( ev, 0 )
     local g, rate = self:AddGesture( data ), self:GetLayerPlaybackRate(ev)
     self:SetLayerCycle( g, 0 )
     self:SetLayerPlaybackRate( g, rate )
